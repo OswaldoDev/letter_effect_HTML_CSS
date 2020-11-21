@@ -1,0 +1,60 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:900);
+:root{
+    --black1: #141414;
+    --black2: rgba(0,0,0,.11);
+    --yellow1: #ABB800;
+    --shadow1: -1px 0px 1px rgba(255,255,255,.8);
+    --shadow2: 1px 0px 1px rgba(0,0,0,.8);
+}
+*, *:before, *:after{
+  box-sizing:border-box;
+}
+body{
+  font-family: 'Lato', sans-serif;
+  background: var(--black1);
+}
+
+div.letter-content{
+  width: 90%;
+  margin: 190px auto;
+  text-align: center;
+}
+.letter{
+  display: inline-block;
+  font-weight: 900;
+  font-size: 7em;
+  margin: 0.2em;
+  position: relative;
+  color: var(--yellow1);
+  transform-style: preserve-3d;
+  perspective: 400;
+  z-index: 1;
+}
+.letter:before, .letter:after{
+  position:absolute;
+  content: attr(data-letter);
+  transform-origin: top left;
+  top:0;
+  left:0;
+}
+.letter, .letter:before, .letter:after{
+  transition: all 0.3s ease-in-out;
+}
+.letter:before{
+  color: #FFF;
+  text-shadow: var(--shadow1), var(--shadow2);
+  z-index: 3;
+  transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+}
+.letter:after{
+  color: var(--black2);
+  z-index:2;
+  transform: scale(1.08,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,1deg);
+}
+.letter:hover:before{
+  color: #FFF;
+  transform: rotateX(0deg) rotateY(-40deg) rotateZ(0deg);
+}
+.letter:hover:after{
+  transform: scale(1.08,1) rotateX(0deg) rotateY(40deg) rotateZ(0deg) skew(0deg,22deg);
+}
